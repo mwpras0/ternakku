@@ -56,6 +56,15 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-md-6">
+									<div class="form-group row">
+										<label class="col-sm-3 col-form-label">Foto Profil</label>
+										<div class="col-sm-9">
+											<img src="<?= base_url() ?>./upload/image/<?= $us->foto_user ?>"
+												class="rounded mx-auto d-block" heigt="200" width="200">
+										</div>
+									</div>
+								</div>
 							</div>
 							<a class="btn btn-danger" href="<?= base_url('Admin/UserAdmin/index')?>">Kembali</a>
 						</form>

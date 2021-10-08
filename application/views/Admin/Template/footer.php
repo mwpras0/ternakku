@@ -32,7 +32,7 @@
  <script src="<?= base_url()?>./assets/Admin/js/dashboard.js"></script>
  <script src="<?= base_url()?>./assets/Admin/js/Chart.roundedBarCharts.js"></script>
  <script src="<?= base_url()?>./assets/Admin/js/file-upload.js"></script>
- <script src="<?= base_url()?>./assets/Admin/js/typeahead.js"></script>
+ <!-- <script src="<?= base_url()?>./assets/Admin/js/typeahead.js"></script> -->
  <script src="<?= base_url()?>./assets/Admin/js/select2.js"></script>
  <!-- End custom js for this page-->
  </body>

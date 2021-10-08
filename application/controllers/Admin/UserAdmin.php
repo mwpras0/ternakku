@@ -32,7 +32,20 @@ class UserAdmin extends CI_Controller {
         $password= $this->input->post('password');
         $alamat= $this->input->post('alamat');
         $telepon = $this->input->post('telepon');
+        $foto_user = $_FILES['foto_user']['name'];
         $posisi = $this->input->post('posisi');
+
+        if ($foto_user = '') {} else {
+            $config['upload_path'] = './upload/image';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('foto_user')) {
+                echo "foto Diri Gagal Di-Upload\n";
+            } else {
+                $foto_user = $this->upload->data('file_name');
+            }
+        }
 
         $data = array(
             'nama' => $nama,
@@ -40,8 +53,10 @@ class UserAdmin extends CI_Controller {
             'password' => md5($password),
             'alamat' => $alamat,
             'telepon' => $telepon,
+            'foto_user' => $foto_user,
             'posisi' => $posisi,
         );
+        // var_dump($data);
 
         $this->AdminModel->insert_user($data, 'user');
         redirect('Admin/UserAdmin');
@@ -64,12 +79,33 @@ class UserAdmin extends CI_Controller {
         $alamat= $this->input->post('alamat');
         $telepon = $this->input->post('telepon');
         $posisi = $this->input->post('posisi');
+        $foto_user = $_FILES['foto_user']['name'];
+
+        if ($foto_user) {
+            $config['upload_path'] = './upload/image';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto_user')) {
+                $foto_user = $this->upload->data('file_name');
+                $this->db->set('foto_user', $foto_user);
+            } else {
+                echo $this->upload->display_errors();
+            }
+        }
 
         $data = array();
 
         if ($password != "") {
             $data = array(
                 'password' => MD5($password)
+            );
+        }
+
+        if ($foto_user != "") {
+            $data += array(
+                'foto_user' => $foto_user
             );
         }
 

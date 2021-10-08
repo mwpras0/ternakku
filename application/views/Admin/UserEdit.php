@@ -6,7 +6,7 @@
 					<div class="card-body">
 						<h4 class="card-title">Edit User</h4>
 						<?php foreach ($user as $us) : ?>
-						<form class="forms-sample" action=<?= base_url('Admin/UserAdmin/simpan_edit'); ?> method="POST">
+						<form class="forms-sample" action=<?= base_url('Admin/UserAdmin/simpan_edit'); ?> method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="exampleInputName1">Nama</label>
 								<input type="hidden" name="id_user" value="<?= $us->id_user ?>">
@@ -27,6 +27,10 @@
 							<div class="form-group">
 								<label for="exampleInputName1">No Telp</label>
 								<input type="number" class="form-control" name="telepon" value="<?= $us->telepon ?>">
+							</div>
+							<div class="form-group">
+								<label for="" class="form-label">Foto Profil</label>
+								<input class="form-control form-control-sm" name="foto_user" type="file">
 							</div>
 							<div class="form-group">
 								<label for="exampleSelectGender">Status</label>

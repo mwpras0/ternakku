@@ -17,6 +17,7 @@
 												<th>No</th>
 												<th>Nama</th>
 												<th>Email</th>
+												<th>Foto</th>
 												<th>Status</th>
 												<th>Aksi</th>
 											</tr>
@@ -29,6 +30,7 @@
 												<td> <?= $no++?> </td>
 												<td> <?= $us->nama?> </td>
 												<td> <?= $us->email?> </td>
+												<td><img src="<?= base_url() ?>./upload/image/<?= $us->foto_user ?>"> </td>
 												<td> <?= $us->posisi?> </td>
 												<td>
 													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/UserAdmin/edit_user/') . $us->id_user ?>">Edit</a>

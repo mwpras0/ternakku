@@ -26,7 +26,7 @@ class AdminModel extends CI_Model{
 
     public function get_id($id)
     {
-        $this->db->select('user.id_user, user.nama, user.email, user.alamat, user.telepon, user.posisi');
+        $this->db->select('user.id_user, user.nama, user.email, user.alamat, user.telepon, user.foto_user, user.posisi');
         $this->db->from('user');
         $hasil = $this->db->where('id_user', $id)->get();
 
