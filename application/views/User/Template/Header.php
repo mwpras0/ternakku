@@ -53,7 +53,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-						<li class="nav-item active"><a class="nav-link" href="">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="<?= base_url('User/HomeUser/index')?>">Home</a></li>
 						<li class="dropdown megamenu-fw">
 							<a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Product</a>
 							<ul class="dropdown-menu megamenu-content" role="menu">
@@ -111,8 +111,8 @@
 								</li>
 							</ul>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="">Tentang Kami</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Kontak Kami</a></li>
+						<li class="nav-item"><a class="nav-link" href="<?= base_url('User/HomeUser/tentang')?>">Tentang Kami</a></li>
+						<li class="nav-item"><a class="nav-link" href="<?= base_url('User/HomeUser/kontak')?>">Kontak Kami</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

@@ -13,4 +13,16 @@ class HomeUser extends CI_Controller {
         $this->load->view('User/Index');
         $this->load->view('User/Template/Footer');
     }
+    public function tentang()
+    {
+        $this->load->view('User/Template/Header');
+        $this->load->view('User/Tentang');
+        $this->load->view('User/Template/Footer');
+    }
+    public function kontak()
+    {
+        $this->load->view('User/Template/Header');
+        $this->load->view('User/Kontak_Kami');
+        $this->load->view('User/Template/Footer');
+    }
 }
