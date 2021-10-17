@@ -98,6 +98,12 @@
 							<span class="menu-title">Hewan</span>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?= base_url('Admin/KategoriAdmin/index')?>">
+							<i class="menu-icon mdi mdi-pig" ></i>
+							<span class="menu-title">Kategori</span>
+						</a>
+					</li>
 					<li class="nav-item nav-category">Dokumentasi</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">

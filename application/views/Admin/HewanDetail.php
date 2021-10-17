@@ -33,27 +33,7 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label">Jenis Hewan</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" value="
-                                            <?php 
-                                                if($hw->jenis_hewan == "1"){
-                                                    echo "SAPI";
-                                                }elseif ($hw->jenis_hewan == "2") {
-                                                    echo "KAMBING";
-                                                }elseif ($hw->jenis_hewan == "3") {
-                                                    echo "DOMBA";
-                                                }elseif ($hw->jenis_hewan == "4") {
-                                                    echo "KUDA";
-                                                }elseif ($hw->jenis_hewan == "5") {
-                                                    echo "AYAM";
-                                                }elseif ($hw->jenis_hewan == "6") {
-                                                    echo "BEBEK";
-                                                }elseif ($hw->jenis_hewan == "7") {
-                                                    echo "ANGSA";
-                                                }elseif ($hw->jenis_hewan == "8") {
-                                                    echo "MERPATI";
-                                                }else{
-                                                    echo "Tidak ada kategori";
-                                                }?>" readonly />
+											<input type="text" class="form-control" value="<?= $hw->nama_kategori?>" readonly />
 										</div>
 									</div>
 								</div>

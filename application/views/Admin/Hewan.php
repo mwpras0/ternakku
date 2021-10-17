@@ -17,7 +17,6 @@
 												<th>No</th>
 												<th>Nama Hewan</th>
 												<th>Harga</th>
-                                                <th>Keterangan</th>
 												<th>Foto</th>
 												<th>Aksi</th>
 											</tr>
@@ -30,7 +29,6 @@
 												<td> <?= $no++?> </td>
 												<td> <?= $hw->nama_hewan?> </td>
 												<td> <?= $hw->harga_hewan?> </td>
-												<td> <?= $hw->detail_hewan?> </td>
 												<td><img src="<?= base_url() ?>./upload/hewan/<?= $hw->foto_hewan ?>"> </td>
 												<td>
 													<a type="button" class="btn btn-outline-info btn-fw" href="<?= base_url('Admin/HewanAdmin/edit_hewan/') . $hw->id_hewan ?>">Edit</a>

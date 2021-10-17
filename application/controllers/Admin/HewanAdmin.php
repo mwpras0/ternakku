@@ -20,8 +20,9 @@ class HewanAdmin extends CI_Controller {
 
     public function tambah_hewan()
     {
+        $data['kategori'] = $this->AdminModel->get_kategori('kategori')->result();
         $this->load->view('Admin/Template/Header');
-        $this->load->view('Admin/HewanTambah');
+        $this->load->view('Admin/HewanTambah',$data);
         $this->load->view('Admin/Template/Footer');
     }
 
@@ -29,7 +30,7 @@ class HewanAdmin extends CI_Controller {
     {
         $nama_hewan = $this->input->post('nama_hewan');
         $harga_hewan = $this->input->post('harga_hewan');
-        $jenis_hewan = $this->input->post('jenis_hewan');
+        $id_kategori_produk = $this->input->post('id_kategori_produk');
         $detail_hewan = $this->input->post('detail_hewan');
         $foto_hewan = $_FILES['foto_hewan']['name'];
 
@@ -48,7 +49,7 @@ class HewanAdmin extends CI_Controller {
         $data = array(
             'nama_hewan' => $nama_hewan,
             'harga_hewan' => $harga_hewan,  
-            'jenis_hewan' => $jenis_hewan,
+            'id_kategori_produk' => $id_kategori_produk,
             'detail_hewan' => $detail_hewan,
             'foto_hewan' => $foto_hewan,
         );
@@ -60,7 +61,10 @@ class HewanAdmin extends CI_Controller {
 
     public function edit_hewan($id)
     {
-        $data['hewan'] = $this->AdminModel->get_id_hewan($id);
+        $where = array('id_hewan'=> $id);
+        $data['hewan'] = $this->db->query("SELECT * FROM hewan hw, kategori kg WHERE hw.id_kategori_produk=kg.id_kategori_produk AND hw.id_hewan='$id'")->result();
+        $data['kategori'] = $this->AdminModel->get_data('kategori')->result();
+
         $this->load->view('Admin/Template/Header');
         $this->load->view('Admin/HewanEdit', $data);
         $this->load->view('Admin/Template/Footer');
@@ -71,6 +75,7 @@ class HewanAdmin extends CI_Controller {
         $id_hewan = $this->input->post('id_hewan');
         $nama_hewan = $this->input->post('nama_hewan');
         $harga_hewan = $this->input->post('harga_hewan');
+        $id_kategori_produk = $this->input->post('id_kategori_produk');
         $jenis_hewan = $this->input->post('jenis_hewan');
         $detail_hewan = $this->input->post('detail_hewan');
         $foto_hewan = $_FILES['foto_hewan']['name'];
@@ -100,6 +105,7 @@ class HewanAdmin extends CI_Controller {
         $data += array(
             'nama_hewan' => $nama_hewan,
             'harga_hewan' => $harga_hewan,  
+            'id_kategori_produk' => $id_kategori_produk,
             'jenis_hewan' => $jenis_hewan,
             'detail_hewan' => $detail_hewan,
         );

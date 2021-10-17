@@ -16,19 +16,14 @@
 								<input type="number" class="form-control" name="harga_hewan" placeholder="Harga" required>
 							</div>
 							<div class="form-group">
-								<label>Jenis Hewan</label>
-								<select class="form-control" name="jenis_hewan" required>
-									<option value=""> -- Pilih Salah satu -- </option>
-									<option value="1">Sapi</option>
-									<option value="2">Kambing</option>
-									<option value="3">Domba</option>
-									<option value="4">Kuda</option>
-									<option value="5">Ayam</option>
-									<option value="6">Bebek</option>
-									<option value="7">Angsa</option>
-									<option value="8">Merpati</option>
-								</select>
-							</div>
+                                <label>Kategori Hewan</label>
+                                <select name="id_kategori_produk" class="form-control">
+                                    <option value="">--Pilih Kategori</option>
+                                    <?php foreach($kategori as $kg) : ?>
+                                    <option value="<?= $kg->id_kategori_produk?>"><?= $kg->nama_kategori ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 							<div class="form-group">
 								<label>Keterangan</label>
 								<textarea class="form-control" name="detail_hewan" rows="4"></textarea>

@@ -20,40 +20,14 @@
 									value="<?= $hw->harga_hewan ?>">
 							</div>
 							<div class="form-group">
-								<label>Jenis Hewan</label>
-								<select class="form-control" name="jenis_hewan" required>
-									<option value="<?= $hw->jenis_hewan?>">
-										<?php 
-                                                if($hw->jenis_hewan == "1"){
-                                                    echo "SAPI";
-                                                }elseif ($hw->jenis_hewan == "2") {
-                                                    echo "KAMBING";
-                                                }elseif ($hw->jenis_hewan == "3") {
-                                                    echo "DOMBA";
-                                                }elseif ($hw->jenis_hewan == "4") {
-                                                    echo "KUDA";
-                                                }elseif ($hw->jenis_hewan == "5") {
-                                                    echo "AYAM";
-                                                }elseif ($hw->jenis_hewan == "6") {
-                                                    echo "BEBEK";
-                                                }elseif ($hw->jenis_hewan == "7") {
-                                                    echo "ANGSA";
-                                                }elseif ($hw->jenis_hewan == "8") {
-                                                    echo "MERPATI";
-                                                }else{
-                                                    echo "Tidak ada kategori";
-                                        }?></option>
-									<option value=""> -- Pilih Salah satu -- </option>
-									<option value="1">Sapi</option>
-									<option value="2">Kambing</option>
-									<option value="3">Domba</option>
-									<option value="4">Kuda</option>
-									<option value="5">Ayam</option>
-									<option value="6">Bebek</option>
-									<option value="7">Angsa</option>
-									<option value="8">Merpati</option>
-								</select>
-							</div>
+                                <label>Kategori Hewan</label>
+                                <select name="id_kategori_produk" class="form-control">
+                                    <option value="<?=$hw->id_kategori_produk?>"><?=$hw->nama_kategori?></option>
+                                    <?php foreach($kategori as $kg) : ?>
+                                    <option value="<?= $kg->id_kategori_produk?>"><?= $kg->nama_kategori ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 							<div class="form-group">
 								<label>Keterangan</label>
 								<textarea class="form-control" name="detail_hewan" rows="3"><?= $hw->detail_hewan?></textarea>
