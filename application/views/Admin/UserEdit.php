@@ -36,9 +36,9 @@
 								<label for="exampleSelectGender">Status</label>
 								<select class="form-control" name="posisi">
 									<option value="<?= $us->posisi ?>"><?= $us->posisi ?></option>
-									<option value="Admin">Admin</option>
-									<option value="Penjual">Penjual</option>
-									<option value="Pembeli">Pembeli</option>
+									<option value="admin">Admin</option>
+									<option value="penjual">Penjual</option>
+									<option value="pembeli">Pembeli</option>
 								</select>
 							</div>
 							<button type="submit" class="btn btn-primary me-2">Simpan</button>

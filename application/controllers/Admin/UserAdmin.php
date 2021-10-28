@@ -5,22 +5,31 @@ class UserAdmin extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('form_validation');         
+        $this->load->library('session');
+        if ($this->session->userdata('posisi') != "admin") {
+            redirect('Login');
+        }else{
         $this->load->model('AdminModel');
         $this->load->helper('url');         
-
+        }
     }
 
 	public function index()
 	{
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $this->AdminModel->get_user ()->result();
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/User',$data);
         $this->load->view('Admin/Template/Footer');
     }
 
     public function tambah_user()
     {
-        $this->load->view('Admin/Template/Header');
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/userTambah');
         $this->load->view('Admin/Template/Footer');
     }
@@ -64,8 +73,10 @@ class UserAdmin extends CI_Controller {
 
     public function edit_user($id)
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $this->AdminModel->get_id($id);
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/UserEdit', $data);
         $this->load->view('Admin/Template/Footer');
     }
@@ -127,8 +138,10 @@ class UserAdmin extends CI_Controller {
 
     public function detail_user($id)
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $this->AdminModel->get_id($id);
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/UserDetail', $data);
         $this->load->view('Admin/Template/Footer');
     }

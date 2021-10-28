@@ -5,23 +5,32 @@ class HewanAdmin extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('AdminModel');
-        $this->load->helper('url');         
-
+        $this->load->library('form_validation');         
+        $this->load->library('session');
+        if ($this->session->userdata('posisi') != "admin") {
+            redirect('Login');
+        }else{
+            $this->load->model('AdminModel');
+            $this->load->helper('url');         
+        }
     }
 
 	public function index()
 	{
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['hewan'] = $this->AdminModel->get_hewan ()->result();
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/Hewan',$data);
         $this->load->view('Admin/Template/Footer');
     }
 
     public function tambah_hewan()
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->AdminModel->get_kategori('kategori')->result();
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanTambah',$data);
         $this->load->view('Admin/Template/Footer');
     }
@@ -61,11 +70,12 @@ class HewanAdmin extends CI_Controller {
 
     public function edit_hewan($id)
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $where = array('id_hewan'=> $id);
         $data['hewan'] = $this->db->query("SELECT * FROM hewan hw, kategori kg WHERE hw.id_kategori_produk=kg.id_kategori_produk AND hw.id_hewan='$id'")->result();
         $data['kategori'] = $this->AdminModel->get_data('kategori')->result();
 
-        $this->load->view('Admin/Template/Header');
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanEdit', $data);
         $this->load->view('Admin/Template/Footer');
     }
@@ -121,8 +131,10 @@ class HewanAdmin extends CI_Controller {
 
     public function detail_hewan($id)
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['hewan'] = $this->AdminModel->get_id_hewan($id);
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/HewanDetail', $data);
         $this->load->view('Admin/Template/Footer');
     }

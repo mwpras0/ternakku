@@ -35,9 +35,9 @@
 								<label >Status</label>
 								<select class="form-control" name="posisi" required>
 									<option value=""> </option>
-									<option value="Admin">Admin</option>
-									<option value="Penjual">Penjual</option>
-									<option value="Pembeli">Pembeli</option>
+									<option value="admin">Admin</option>
+									<option value="penjual">Penjual</option>
+									<option value="pembeli">Pembeli</option>
 								</select>
 							</div>
 							<button type="submit" class="btn btn-primary me-2">Simpan</button>

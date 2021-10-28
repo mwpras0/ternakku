@@ -5,22 +5,31 @@ class KategoriAdmin extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('AdminModel');
-        $this->load->helper('url');         
-
+        $this->load->library('form_validation');         
+        $this->load->library('session');
+        if ($this->session->userdata('posisi') != "admin") {
+            redirect('Login');
+        }else{
+            $this->load->model('AdminModel');
+            $this->load->helper('url');         
+        }
     }
 
     public function index()
 	{
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->AdminModel->get_kategori ()->result();
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/Kategori',$data);
         $this->load->view('Admin/Template/Footer');
     }
 
     public function tambah_kategori()
     {
-        $this->load->view('Admin/Template/Header');
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/KategoriTambah');
         $this->load->view('Admin/Template/Footer');
     }
@@ -40,8 +49,10 @@ class KategoriAdmin extends CI_Controller {
 
     public function edit_kategori($id)
     {
+        $sess['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->AdminModel->get_id_kategori($id);
-        $this->load->view('Admin/Template/Header');
+        
+        $this->load->view('Admin/Template/Header',$sess);
         $this->load->view('Admin/KategoriEdit', $data);
         $this->load->view('Admin/Template/Footer');
     }
