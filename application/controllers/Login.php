@@ -58,30 +58,12 @@ class Login extends CI_Controller {
 		$nama = $this->input->post('nama');
         $email = $this->input->post('email');
         $password= $this->input->post('password');
-        $alamat= $this->input->post('alamat');
-        $telepon = $this->input->post('telepon');
-        $foto_user = $_FILES['foto_user']['name'];
         $posisi = $this->input->post('posisi');
-
-        if ($foto_user = '') {} else {
-            $config['upload_path'] = './upload/image';
-            $config['allowed_types'] = 'jpg|jpeg|png';
-
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('foto_user')) {
-                echo "foto Diri Gagal Di-Upload\n";
-            } else {
-                $foto_user = $this->upload->data('file_name');
-            }
-        }
 
         $data = array(
             'nama' => $nama,
             'email' => $email,  
             'password' => md5($password),
-            'alamat' => $alamat,
-            'telepon' => $telepon,
-            'foto_user' => $foto_user,
             'posisi' => $posisi,
         );
         // var_dump($data);

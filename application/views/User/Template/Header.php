@@ -101,27 +101,81 @@
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <li class="cart-box">
                     <ul class="cart-list">
+                        <?php foreach($hewan as $hwn){ ?>
                         <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
+                            <a href="#" class="photo"><img src="<?= base_url() ?>./upload/hewan/<?= $hwn->foto_hewan ?>"
+                                    class="cart-thumb" alt="" /></a>
+                            <h6><a href="#"><?= $hwn->nama_hewan?> </a></h6>
+                            <p><?= $hwn->qty?> x <span class="price"><?= $hwn->harga_hewan?></span></p>
                         </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+                        <?php } ?>
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            <a href="<?= base_url('User/Keranjang/index')?>"
+                                class="btn btn-default hvr-hover btn-cart">Keranjang</a>
+
                         </li>
                     </ul>
                 </li>
+                <li class="dropdown megamenu-fw">
+                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Product</a>
+                    <ul class="dropdown-menu megamenu-content col-lg-5" role="menu">
+                        <div class="row">
+                            <div class="col-menu">
+                                <h6 class="title">Hewan Ternak</h6>
+                                <div class="content">
+                                    <ul class="menu-col">
+                                        <?php foreach($kategori as $kg) :?>
+                                        <li><a
+                                                href="<?= base_url('User/HomeUser/Produk/'). $kg->id_kategori_produk ?>"><?= $kg->nama_kategori ?></a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- end col-3 -->
+                        </div>
+                        <!-- end row -->
+                    </ul>
+                </li>
+            </div>
+
+
+            <!-- Edit Profile dan logout -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="dropdown megamenu-fw">
+                        <a href="" class="nav-link dropdown-toggle arrow"
+                            data-toggle="dropdown"><?= $user['nama']; ?></a>
+                        <ul class="dropdown-menu megamenu-content col-lg-2" role="menu">
+                            <div class="row">
+                                <div class="col-menu"><br>
+                                    <center>
+                                        <img class="img-md rounded-circle"
+                                            src="<?= base_url('./upload/image/'). $user['foto_user']; ?>" width="70"
+                                            height="70" alt="Profile image">
+                                        <br>
+                                        <?= $user['nama']; ?>
+                                        <br>
+                                        <?= $user['email']; ?>
+                                    </center>
+                                    <br>
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            <li><a href="<?= base_url('User/HomeUser/edit_profile')?>"> <b> Edit
+                                                        Profile
+                                                    </b></a></li>
+                                            <li><a href="<?= base_url('User/HomeUser/logout')?>"> <b> Sign Out
+                                                    </b></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end col-3 -->
+                            </div>
+                            <!-- end row -->
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <!-- End Side Menu -->
         </nav>

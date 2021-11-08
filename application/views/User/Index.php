@@ -64,12 +64,8 @@
                         <img src="<?= base_url() ?>./upload/hewan/<?= $hw->foto_hewan ?>" class="img-fluid" alt="Image"
                             style="width: contain; height: 250px; object-fit: cover;">
                         <div class="mask-icon">
-                            <ul>
-                                <li><a href="<?= base_url('User/HomeUser/shop_detail/') . $hw->id_hewan?>"
-                                        data-toggle="tooltip" data-placement="right" title="View"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Tambah Keranjang</a>
+                            <a class="cart" href="<?= base_url('User/HomeUser/shop_detail/') . $hw->id_hewan?>">Detail
+                                Hewan</a>
                         </div>
                     </div>
                     <div class="why-text">

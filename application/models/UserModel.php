@@ -6,10 +6,14 @@ class UserModel extends CI_Model{
         $query = $this->db->get($table);
         return $query;
     }
-
+    
+    function total_keranjang() {
+        return $this->db->get('keranjang')->num_rows();
+    }
+      
     public function id_hewan($id)
     {
-        $this->db->select('hewan.id_hewan, hewan.nama_hewan, hewan.jenis_hewan, hewan.harga_hewan, hewan.detail_hewan, 
+        $this->db->select('hewan.id_hewan, hewan.nama_hewan, hewan.harga_hewan, hewan.detail_hewan, 
         hewan.foto_hewan,kategori.id_kategori_produk, kategori.nama_kategori');
         $this->db->from('hewan');
         $this->db->join('kategori', 'hewan.id_kategori_produk = kategori.id_kategori_produk');
@@ -31,7 +35,7 @@ class UserModel extends CI_Model{
 
     public function id_kategori($id)
     {
-        $this->db->select('hewan.id_hewan, hewan.nama_hewan, hewan.jenis_hewan, hewan.harga_hewan, hewan.detail_hewan, 
+        $this->db->select('hewan.id_hewan, hewan.nama_hewan, hewan.harga_hewan, hewan.detail_hewan, 
         hewan.foto_hewan,kategori.id_kategori_produk, kategori.nama_kategori');
         $this->db->from('hewan');
         $this->db->join('kategori', 'hewan.id_kategori_produk = kategori.id_kategori_produk');
@@ -45,4 +49,9 @@ class UserModel extends CI_Model{
         
     }
 
-}?>
+    public function edit($table, $data, $where)
+    {
+        $this->db->update($table, $data, $where);
+    }
+
+}

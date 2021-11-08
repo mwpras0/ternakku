@@ -11,5 +11,10 @@ class AuthModel extends CI_Model {
     {
         $this->db->insert($data, $table);
     }
+
+	public function get_data($table){
+        $query = $this->db->get($table);
+        return $query;
+    }
 }
 ?>

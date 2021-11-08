@@ -86,7 +86,7 @@ class HewanAdmin extends CI_Controller {
         $nama_hewan = $this->input->post('nama_hewan');
         $harga_hewan = $this->input->post('harga_hewan');
         $id_kategori_produk = $this->input->post('id_kategori_produk');
-        $jenis_hewan = $this->input->post('jenis_hewan');
+        // $jenis_hewan = $this->input->post('jenis_hewan');
         $detail_hewan = $this->input->post('detail_hewan');
         $foto_hewan = $_FILES['foto_hewan']['name'];
 
@@ -116,7 +116,7 @@ class HewanAdmin extends CI_Controller {
             'nama_hewan' => $nama_hewan,
             'harga_hewan' => $harga_hewan,  
             'id_kategori_produk' => $id_kategori_produk,
-            'jenis_hewan' => $jenis_hewan,
+            // 'jenis_hewan' => $jenis_hewan,
             'detail_hewan' => $detail_hewan,
         );
 

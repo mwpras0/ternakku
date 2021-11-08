@@ -7,7 +7,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Register </h4>
-                                <form class="forms-sample" method="POST" action="<?= base_url('Auth/register')?>">
+                                <form class="forms-sample" method="POST"
+                                    action="<?= base_url('Login/simpan_register')?>">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Name</label>
                                         <input type="text" class="form-control" id="nama" name="nama"
@@ -20,25 +21,19 @@
                                             placeholder="Email" value="<?= set_value('email'); ?>">
                                         <?= form_error('email','<small class="text-danger pl-3">','</small>'); ?>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Password</label>
-                                                <div class="col-sm-9">
-                                                    <input type="password" id="password2" name="password1"
-                                                        class="form-control" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Ulangi Password</label>
-                                                <div class="col-sm-9">
-                                                    <input type="password" id="password2" name="password2"
-                                                        class="form-control" />
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="Password" value="<?= set_value('password'); ?>">
+                                        <?= form_error('password','<small class="text-danger pl-3">','</small>'); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select class="form-control" name="posisi" required>
+                                            <option value=""> </option>
+                                            <option value="penjual">Penjual</option>
+                                            <option value="pembeli">Pembeli</option>
+                                        </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                                     <button class="btn btn-light">Cancel</button>
